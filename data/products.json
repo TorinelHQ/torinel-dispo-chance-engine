@@ -1,0 +1,22 @@
+[
+  {
+    "name": "ING",
+    "type": "bank",
+    "dispo": true
+  },
+  {
+    "name": "DKB",
+    "type": "bank",
+    "dispo": true
+  },
+  {
+    "name": "N26",
+    "type": "fintech",
+    "dispo": "limited"
+  },
+  {
+    "name": "Girokonto ohne SCHUFA",
+    "type": "alternative",
+    "dispo": false
+  }
+]
