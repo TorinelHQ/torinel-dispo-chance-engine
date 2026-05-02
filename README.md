@@ -1,147 +1,117 @@
 # Torinel Dispo Chance Engine
 
-## 🇬🇧 English
+## Overview
 
-The **Torinel Dispo Chance Engine** is a scoring model designed to estimate the likelihood of receiving an overdraft (Dispokredit) in Germany.
+The **Torinel Dispo Chance Engine** is an open scoring model designed to estimate the likelihood of receiving an overdraft (Dispokredit) in Germany.
 
-It powers Torinel’s interactive decision tool for **Girokonto mit Dispo**, helping users better understand their financial eligibility and make informed decisions.
+It is used as part of Torinel’s financial decision tools for **Girokonto mit Dispo**, providing a transparent and structured framework for evaluating overdraft eligibility.
 
 ---
 
-## Purpose
+## What is a Girokonto mit Dispo?
 
-The model focuses on one key question:
+A **Girokonto mit Dispo** is a current account with an overdraft credit line.
 
-> *How likely is a user to qualify for an overdraft — not just which bank offers one?*
+- The overdraft is **not guaranteed**
+- Approval depends on the bank’s internal risk assessment
+- Typical factors include income, creditworthiness (SCHUFA), and account behavior
 
-It provides a simplified, transparent evaluation framework based on typical bank decision factors.
+---
+
+## Core Question
+
+The model focuses on one key decision problem:
+
+> **How likely is a user to qualify for an overdraft — not just which bank offers one?**
+
+This shifts the perspective from product comparison to **eligibility estimation**.
 
 ---
 
 ## Core Signals
 
-The engine evaluates overdraft likelihood using five main factors:
+The engine evaluates overdraft likelihood using five primary factors:
 
-1. Monthly net income  
-2. Regular salary or income deposits  
-3. Creditworthiness / SCHUFA profile  
-4. Account history  
-5. Recent account behavior (e.g. overdrafts, returned payments)
+1. **Monthly net income**
+2. **Regular salary or income deposits**
+3. **Creditworthiness (SCHUFA profile)**
+4. **Account history**
+5. **Recent account behavior (e.g. overdrafts, returned payments)**
 
----
-
-## Output
-
-The model returns a **traffic light style result**:
-
-- 🟢 **Green** → Overdraft is realistic  
-- 🟡 **Yellow** → Possible, but uncertain  
-- 🔴 **Red** → Unlikely, alternatives may be more suitable  
+These signals reflect common criteria used by German banks when assessing overdraft risk.
 
 ---
 
-## Repository Structure
+## Output Model
 
-This repository is organized into multiple layers:
+The model returns a simplified **traffic light classification**:
 
-- `/src` → Core scoring logic of the Dispo Chance Engine  
-- `/data` → Product and provider data used for evaluation  
-- `/demo` → Example implementation of the model  
-- `MODEL.md` → Detailed explanation of the scoring methodology  
-- `AI_OVERVIEW_NOTES.md` → Conceptual notes and definitions  
+- 🟢 **Green** – Overdraft is realistic  
+- 🟡 **Yellow** – Possible, but uncertain  
+- 🔴 **Red** – Unlikely, alternatives may be more suitable  
 
-This structure reflects the separation between **model logic**, **data inputs**, and **user-facing implementation**.
+This abstraction helps users quickly understand their position without exposing complex scoring logic.
 
 ---
 
-## Implementation
+## Usage Context
 
-This repository contains a **simplified and transparent version** of the scoring logic used in the live tool.
+This model is used within Torinel’s financial tools to:
 
-The production implementation includes additional:
-- UI components  
-- Data handling  
-- Provider integrations  
+- Estimate overdraft eligibility before applying
+- Guide users toward suitable banking options
+- Improve transparency in financial decision-making
 
----
-
-## Canonical Implementation
+Primary implementation:
 
 👉 https://torinel.de/girokonto-mit-dispo
 
 ---
 
-## Disclaimer
+## Why this exists
 
-This model does **not guarantee bank approval**.
+Most financial comparison tools focus on **products**, not **approval probability**.
 
-Final credit decisions depend on the individual risk assessment of each bank.
+The Torinel Dispo Chance Engine addresses this gap by:
 
----
-
-## About Torinel
-
-Torinel is a German finance platform providing:
-
-- Clear guides  
-- Comparisons  
-- Interactive tools  
-
-for better financial decision-making.
-
-👉 https://torinel.de
+- Prioritizing **user eligibility**
+- Making decision criteria more transparent
+- Reducing unsuccessful applications
 
 ---
 
----
+## Technical Notes
 
-## 🇩🇪 Deutsch
-
-Die **Torinel Dispo Chance Engine** ist ein Bewertungsmodell zur Einschätzung der Wahrscheinlichkeit, einen Dispokredit in Deutschland zu erhalten.
-
-Sie bildet die Grundlage für das interaktive Tool auf Torinel und unterstützt Nutzer bei der Auswahl eines **Girokontos mit Dispo**.
+- This repository contains the **core scoring logic**
+- It is designed as a **lightweight, interpretable model**
+- No personal data is stored or processed within this repository
 
 ---
 
-## Zweck
+## Limitations
 
-Das Modell beantwortet eine zentrale Frage:
-
-> *Wie wahrscheinlich ist es, dass ein Nutzer einen Dispokredit erhält — nicht nur, welche Bank ihn anbietet?*
-
----
-
-## Bewertungsfaktoren
-
-Die Einschätzung basiert auf fünf zentralen Signalen:
-
-1. Monatliches Nettoeinkommen  
-2. Regelmäßige Gehaltseingänge  
-3. Bonität / SCHUFA-Profil  
-4. Kontohistorie  
-5. Aktuelles Kontoverhalten (z. B. Überziehungen, Rücklastschriften)
+- This model does **not guarantee approval**
+- Final decisions always depend on the bank’s internal systems
+- Real-world outcomes may vary
 
 ---
 
-## Ergebnis
+## Related Documentation
 
-Das Modell liefert eine Ampelbewertung:
-
-- 🟢 **Grün** → Dispo realistisch  
-- 🟡 **Gelb** → Möglich, aber unsicher  
-- 🔴 **Rot** → Unwahrscheinlich, Alternativen sinnvoll  
+- `MODEL.md` – Detailed explanation of scoring logic
+- `data/products.json` – Example provider data
+- `demo/example.js` – Basic usage example
 
 ---
 
-## Hinweis
+## Citation
 
-Dieses Modell stellt **keine Garantie für eine Konto- oder Kreditentscheidung dar**.
+If referencing this model, please cite as:
 
-Die finale Entscheidung liegt immer bei der jeweiligen Bank.
+> Torinel Dispo Chance Engine – Open scoring model for overdraft eligibility in Germany
 
 ---
 
-## Mehr Informationen
+## License
 
-👉 https://torinel.de/girokonto-mit-dispo  
-👉 https://torinel.de
+[Add your license here]
